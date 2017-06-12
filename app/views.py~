@@ -5,7 +5,7 @@ import os
 from flask import  request, redirect, url_for
 from werkzeug.utils import secure_filename
 from flask import send_from_directory
-
+import zipfile
 
 UPLOAD_FOLDER = '/home/shruthi/Flask/Form2/app/uploads'
 ALLOWED_EXTENSIONS = set(['zip', 'tar','gz','tar.gz', 'pdf','jpg', 'jpeg', 'gif'])
@@ -17,7 +17,7 @@ def questions():
     if request.method == 'POST':
         print(request.form.getlist('hello'))
         print(request.form.getlist('add'))
-        return "success";
+        return "success"
     arr=["Tag the Image","Describe the image","Count the number of human beings"] 
     return  render_template('tags.html',arr=arr)
 
@@ -28,6 +28,8 @@ def select_type():
         	 return  redirect(url_for('questions'))
  	arr=["Images","videos","Documents","Audio"]      
     	return  render_template('select_type.html',arr=arr)
+ 
+ 
     	
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
@@ -59,8 +61,22 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            zipobj=extract_files(app.config['UPLOAD_FOLDER']+"/"+filename,filename);
+            #print(zipobj)
             return redirect(url_for('select_type'))
     form=UploadFile() 
     return render_template('import.html',form=form)
- 
+    
+def extract_files(fullpath,filename):
+    	 os.makedirs(fullpath)
+    	 os.makedirs(fullpath+"/images")
+    	 os.makedirs(fullpath+"/videos")
+    	 os.makedirs(fullpath+"/pds")
+    	 if filename.rsplit('.', 1)[1].lower()=="zip" :
+    	 	zfile = zipfile.ZipFile(fullpath)
+		for finfo in zfile.namelist():
+			#if(finfo.rsplit('.',1)[1].lower()=="pdf")
+			pass
+	else:
+		print "tar"
 

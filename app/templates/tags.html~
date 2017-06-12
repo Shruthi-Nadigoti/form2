@@ -29,9 +29,9 @@
 		}
 	}
 </script>
-   <form method="post">
+ <form method="post">
 <p>Which type of Tags you need ?</p>
- 	{% for item in arr %}
+	{% for key, value in zipobj.items() %}
 		<div class="checkbox">
  		 <label><input type="checkbox" name="hello" value="{{ item }}">{{ item }}</label>
 		</div>

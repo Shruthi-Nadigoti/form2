@@ -1,0 +1,31 @@
+/*for(int k=j;k<j+h*2-1;k++)
+    			{
+    			
+    				if(k<h+j-1)
+    				{
+    					if(m[i][k]>=succ)
+    					{
+    						sum=sum+m[i][k]-succ;
+    						succ++;
+    					}
+    					else
+    					{
+    						count=0;
+    						break;
+    					}
+    				}
+    				else
+    				{
+    					if(m[i][k]>=succ)
+    					{
+    						sum=sum+m[i][k]-succ;
+    						succ--;
+    					}
+    					else
+    					{
+    						count=0;
+    						break;
+    					}
+    				}
+    				
+    			}*/

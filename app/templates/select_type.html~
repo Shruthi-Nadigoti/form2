@@ -3,14 +3,27 @@
 
 {% block content %}
   <form method="post">
-<p>Which type of Tags you need ?</p>
-	<div class="row">
- 	{% for item in arr %}
-		<div class="checkbox " class="col-lg-6" >
- 		 <label class="col-lg-6" style="background-color:gray;height:100px;width:100px;float:left;margin-left:100px;margin-bottom:100px"><input type="checkbox" name="selecttype" value="{{ item }}"><span style="position:relative;top:40px;color:white">{{ item }}</span></label>
+  {% if(arr|length>1) %}
+<h><b>Please Uncheck the following item if you do not need tagging ?
+ {{arr|length}}</b></h>
+	
+ 	
+	{% for key, value in arr.items() %}
+		{% if value!=0 and key!="zzz"%}
+		<div class="checkbox">
+ 		 <label><input type="checkbox" name="selecttype" value="{{ key }}" checked>Number of<b> {{ key }}</b> are :<b> {{value}}</b></label>
 		</div>
+		{% elif key=="zzz"%}
+			<input type="checkbox" name="filepath" value="{{value }}" style="visibility:hidden " checked />
+		{%endif %}
 	{% endfor %}
-	</div>
-<input type="submit" class="btn btn-primary" >
+	<input type="submit" class="btn btn-primary" >
 </form>
+ {%else%}
+	  <b>Sorry You don't have suitable format file <br>Please Upload again</br>
+	  <a class="btn btn-info" href="/import">Upload Again</a>
+	  </b>
+{%endif%}	  
+	
+
 {% endblock %}
