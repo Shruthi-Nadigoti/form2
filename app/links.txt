@@ -1,0 +1,16 @@
+drupal:
+	http://www.eilyin.name/note/database-queries-drupal-8-7
+	https://www.tutorsground.in/node/3
+	https://attiks.com/blog/add-a-custom-menu-to-the-navbar-module
+	<?php print render($page['sidebar_first']);?>
+	form:
+	https://www.drupal.org/node/1811806
+
+walkthrough:
+	https://studio.iitbombayx.in/
+	https://docs.google.com/spreadsheets/d/1ic2aWPVK5PXPmq6TP0lAvX1gDyQ5JmHcqC8GUqoOh9Q/edit?ts=591ee5be#gid=1308518159
+
+
+pybossa:
+	https://github.com/Scifabric/pybossa/blob/master/doc/user/tutorial.rst
+

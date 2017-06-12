@@ -1,0 +1,37 @@
+<html>
+  <head>
+  
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Import File</title>
+    {% endif %}
+  </head>
+  <body>
+    <div>CrowdSourcing:   <a href="/index">Home</a></div>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    
+    {% for message in messages %}
+       
+        <div class="alert alert-success alert-dismissable">
+  	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+ 	 {{ message }} 
+	</div>
+    {% endfor %}
+   	
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <div class="container">{% block content %}{% endblock %}
+    </div>
+  </body>
+</html>

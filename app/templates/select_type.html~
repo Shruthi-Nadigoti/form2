@@ -1,0 +1,16 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+  <form method="post">
+<p>Which type of Tags you need ?</p>
+	<div class="row">
+ 	{% for item in arr %}
+		<div class="checkbox " class="col-lg-6" >
+ 		 <label class="col-lg-6" style="background-color:gray;height:100px;width:100px;float:left;margin-left:100px;margin-bottom:100px"><input type="checkbox" name="selecttype" value="{{ item }}"><span style="position:relative;top:40px;color:white">{{ item }}</span></label>
+		</div>
+	{% endfor %}
+	</div>
+<input type="submit" class="btn btn-primary" >
+</form>
+{% endblock %}
