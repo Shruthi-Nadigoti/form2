@@ -1,7 +1,7 @@
 import zipfile,tarfile,os,shutil #used create,delete the folder
 def extract_files(fullpath,filename): #to extract the files fullpath is the parent directory and filename to is name of the file
-    name=filename.rsplit('.',1)[0].lower()+"1"  #this shoud be replaced with project name(unic)
-    actual_name=""
+    name=filename.rsplit('.',1)[0].lower()+"1"  #this shoud be replaced with project name(unic) 
+    actual_name="" 
     x=[]
     if  filename.rsplit('.', 1)[1].lower()=="zip": # checking extension with zip
     	 zfile = zipfile.ZipFile(fullpath+"/"+filename) #opening the file
@@ -10,7 +10,7 @@ def extract_files(fullpath,filename): #to extract the files fullpath is the pare
          x=zfile.namelist() #list of files the zip file
     elif "tar.gz" in filename and filename.rsplit('.', 1)[1].lower()=="gz":#checking the extension with tar.gz
          tar = tarfile.open(fullpath+"/"+filename,'r:gz')#opening the file
-         tar.extractall(fullpath+"/") #extracting
+         tar.extractall(fullpath+"/") #extracting 
          actual_name=filename[:filename.rfind("tar.gz")-1] #getting the name of the extracted file
          x=tar.getnames() #getting the list of files in tar.gz
 
@@ -24,12 +24,12 @@ def extract_files(fullpath,filename): #to extract the files fullpath is the pare
          print srcfullpath
          if('.' in f):
                 m=m+1
-                f_name=srcfullpath[srcfullpath.rfind('/')+1:] #getting only filename
+                f_name=srcfullpath[srcfullpath.rfind('/')+1:] #getting only filename 
                 #f_name_only=f_name[:f_name.rfind('.')]
                 if(f.rsplit('.',1)[1].lower() in ['png','gif','jpeg','jpg']):#checking with file extension
                     dst =fullpath+"/"+name+"/images"#defining the destination folder
                     shutil.move(srcfullpath, dst)#moving the file to destination
-                    os.rename(dst+"/"+f_name,(dst+"/"+str(m)+f_name))#renaming the files by adding some  prifix integer to the filename
+                    os.rename(dst+"/"+f_name,(dst+"/"+str(m)+f_name))#renaming the files by adding some  prifix integer to the filename 
                 elif(f.rsplit('.',1)[1].lower() in ['pdf','doc','txt','odt','docx']):#checking the extension with document related things
                     dst =fullpath+"/"+name+"/documents"
                     shutil.move(srcfullpath, dst)
@@ -63,7 +63,4 @@ def extract_files(fullpath,filename): #to extract the files fullpath is the pare
         shutil.rmtree(fullpath+"/"+actual_name)#deleting the actual folder
     if os.path.exists(fullpath+"/"+filename):
         os.remove(fullpath+"/"+filename)#deleting the zip or tar.gz file
-    if(len(dictcount)<2):
-        if os.path.exists(fullpath+"/"+name):
-            shutil.rmtree(fullpath+"/"+name)#removing the classified folder if there are no files
     return dictcount#sending the data to called function
